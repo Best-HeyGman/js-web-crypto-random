@@ -1,4 +1,4 @@
-None of this code was written by me. This was a test I did with the Codestral LLM. That's the exact Prompt I used:
+Most of this code was not written by me. This was a test I did with the Codestral LLM. That's the exact Prompt I used:
 
 ```
 Hi, please create a website (.html) with javascript that has the following properties:
