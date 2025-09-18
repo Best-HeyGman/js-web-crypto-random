@@ -1,3 +1,6 @@
+let generateIsProcessing = false;
+let selectLineIsProcessing = false;
+
 function getRandomInt(min, max) {
     const range = max - min + 1;
     const randomBuffer = new Uint32Array(1);
@@ -6,47 +9,70 @@ function getRandomInt(min, max) {
     return Math.floor(randomNumber * range) + min;
 }
 
-document.getElementById('generate').addEventListener('click', function() {
-    const min = parseInt(document.getElementById('min').value);
-    const max = parseInt(document.getElementById('max').value);
-    
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+document.getElementById('generate').addEventListener('click', async function() {
+    if (generateIsProcessing) {
+        return;
+    }
+
+    generateIsProcessing = true;
+
     this.style.backgroundColor = '#c71585';
-    setTimeout(() => {
-        this.style.backgroundColor = '#007BFF';
-    }, 2000); // 2 seconds
+
+    const min = parseInt(await document.getElementById('min').value);
+    const max = parseInt(await document.getElementById('max').value);
 
     if (isNaN(min) || isNaN(max)) {
         alert('Please enter valid numbers for min and max.');
+        this.style.backgroundColor = '#007BFF';
+        generateIsProcessing = false;
         return;
     }
     
     if (min >= max) {
         alert('Min value must be less than max value.');
+        this.style.backgroundColor = '#007BFF';
+        generateIsProcessing = false;
         return;
     }
     
-    const randomNumber = getRandomInt(min, max);
+    const randomNumber = await getRandomInt(min, max);
     document.getElementById('result').textContent = `${randomNumber}`;
+
+    await sleep(1000);
+    this.style.backgroundColor = '#007BFF';
+    generateIsProcessing = false;
 });
 
-document.getElementById('selectLine').addEventListener('click', function() {
-    const textInput = document.getElementById('textInput').value;
-    const lines = textInput.split('\n').filter(line => line.trim() !== '');
+document.getElementById('selectLine').addEventListener('click', async function() {
+    if (selectLineIsProcessing) {
+        return;
+    }
+
+    selectLineIsProcessing = true;
+    const textInput = await document.getElementById('textInput').value;
+    const lines = await textInput.split('\n').filter(line => line.trim() !== '');
 
     this.style.backgroundColor = '#c71585';
-    setTimeout(() => {
-        this.style.backgroundColor = '#007BFF';
-    }, 2000); // 2 seconds
 
     if (lines.length === 0) {
         alert('Please enter some text.');
+        this.style.backgroundColor = '#007BFF';
+        selectLineIsProcessing = false;
         return;
     }
     
     const minLine = 1;
     const maxLine = lines.length;
-    const randomLineNumber = getRandomInt(minLine, maxLine);
+    const randomLineNumber = await getRandomInt(minLine, maxLine);
     const selectedLine = lines[randomLineNumber - 1];
     
     document.getElementById('lineResult').textContent = `${selectedLine}`;
+
+    await sleep(1000);
+    this.style.backgroundColor = '#007BFF';
+    selectLineIsProcessing = false;
 });
