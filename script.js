@@ -10,6 +10,11 @@ document.getElementById('generate').addEventListener('click', function() {
     const min = parseInt(document.getElementById('min').value);
     const max = parseInt(document.getElementById('max').value);
     
+    this.style.backgroundColor = '#c71585';
+    setTimeout(() => {
+        this.style.backgroundColor = '#007BFF';
+    }, 2000); // 2 seconds
+
     if (isNaN(min) || isNaN(max)) {
         alert('Please enter valid numbers for min and max.');
         return;
@@ -21,13 +26,18 @@ document.getElementById('generate').addEventListener('click', function() {
     }
     
     const randomNumber = getRandomInt(min, max);
-    document.getElementById('result').textContent = `Random Number: ${randomNumber}`;
+    document.getElementById('result').textContent = `${randomNumber}`;
 });
 
 document.getElementById('selectLine').addEventListener('click', function() {
     const textInput = document.getElementById('textInput').value;
     const lines = textInput.split('\n').filter(line => line.trim() !== '');
-    
+
+    this.style.backgroundColor = '#c71585';
+    setTimeout(() => {
+        this.style.backgroundColor = '#007BFF';
+    }, 2000); // 2 seconds
+
     if (lines.length === 0) {
         alert('Please enter some text.');
         return;
@@ -38,5 +48,5 @@ document.getElementById('selectLine').addEventListener('click', function() {
     const randomLineNumber = getRandomInt(minLine, maxLine);
     const selectedLine = lines[randomLineNumber - 1];
     
-    document.getElementById('lineResult').textContent = `Line ${randomLineNumber}: ${selectedLine}`;
+    document.getElementById('lineResult').textContent = `${selectedLine}`;
 });
