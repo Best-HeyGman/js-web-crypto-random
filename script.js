@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 // SPDX-License-Identifier: AGPL-3.0-or-later
 // © 2025 Stephan Hegemann
 
-=======
->>>>>>> c77b19c5b03265bebe5376fb0fbaa7349b0b457f
 let generateIsProcessing = false;
 let selectLineIsProcessing = false;
 
@@ -19,7 +16,6 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', () => {
     const savedMinValue = localStorage.getItem('minValue');
     const savedMaxValue = localStorage.getItem('maxValue');
@@ -36,8 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-=======
->>>>>>> c77b19c5b03265bebe5376fb0fbaa7349b0b457f
 document.getElementById('generate').addEventListener('click', async function() {
     if (generateIsProcessing) {
         return;
@@ -67,12 +61,9 @@ document.getElementById('generate').addEventListener('click', async function() {
     const randomNumber = await getRandomInt(min, max);
     document.getElementById('result').textContent = `${randomNumber}`;
 
-<<<<<<< HEAD
     localStorage.setItem('minValue', min);
     localStorage.setItem('maxValue', max);
 
-=======
->>>>>>> c77b19c5b03265bebe5376fb0fbaa7349b0b457f
     await sleep(1000);
     this.style.backgroundColor = '#007BFF';
     generateIsProcessing = false;
@@ -103,11 +94,8 @@ document.getElementById('selectLine').addEventListener('click', async function()
     
     document.getElementById('lineResult').textContent = `${selectedLine}`;
 
-<<<<<<< HEAD
     localStorage.setItem('textInput', textInput);
 
-=======
->>>>>>> c77b19c5b03265bebe5376fb0fbaa7349b0b457f
     await sleep(1000);
     this.style.backgroundColor = '#007BFF';
     selectLineIsProcessing = false;
