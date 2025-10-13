@@ -18,11 +18,18 @@ body {
 
 #container {
     max-width: 600px;
+}
+
+#no-warranty-text {
     padding: 20px;
 }
 
 .section {
     margin-bottom: 20px;
+}
+
+.subsection {
+    margin-bottom: 5px;
 }
 
 h1, h2 {
