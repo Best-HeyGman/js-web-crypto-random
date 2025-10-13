@@ -17,8 +17,8 @@ body {
 }
 
 #container {
-    /*width: 80%;*/
     max-width: 600px;
+    padding: 20px;
 }
 
 .section {
