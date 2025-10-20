@@ -6,10 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-html, body {
-    overscroll-behavior: none;
+    overscroll-behavior-y: none;
 }
 
 .container {
