@@ -8,6 +8,10 @@ body {
     align-items: center;
 }
 
+html, body {
+    overscroll-behavior: none;
+}
+
 .container {
     background-color: #fff;
     padding-top: 5px;
